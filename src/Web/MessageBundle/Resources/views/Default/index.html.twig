@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Email Compose | HomeWork</title>
+
+    <!-- BEGIN META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="your,keywords">
+    <meta name="description" content="Short explanation about this website">
+    <!-- END META -->
+
+    <!-- BEGIN STYLESHEETS -->
+    <link rel="icon" href="{{asset ('lib/img/hw.ico')}}" sizes="16x16 32x32 48x48 64x64">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/bootstrap.css?1422792965')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/materialadmin.css?1425466319')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/font-awesome.min.css?1422529194')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/material-design-iconic-font.min.css?1421434286')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/libs/summernote/summernote.css?1425218701')}}" />
+    <!-- END STYLESHEETS -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../../assets/js/libs/utils/html5shiv.js?1403934957"></script>
+    <script type="text/javascript" src="../../assets/js/libs/utils/respond.min.js?1403934956"></script>
+    <![endif]-->
+</head>
+<body class="menubar-hoverable header-fixed menubar-first full-content ">
+
+<!-- BEGIN HEADER-->
+<header id="header" >
+    <div class="headerbar">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="headerbar-left">
+            <ul class="header-nav header-nav-options">
+                <li class="header-nav-brand" >
+                    <div class="brand-holder">
+                        <a href="#">
+                            <span class="text-lg text-bold text-primary">HOMEWORK</span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <a class="btn btn-icon-toggle menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="headerbar-right">
+            <ul class="header-nav header-nav-options">
+                <li>
+                    <!-- Search form -->
+                    <form class="navbar-search" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="headerSearch" placeholder="Search for projects">
+                        </div>
+                        <button type="submit" class="btn btn-icon-toggle ink-reaction"><i class="fa fa-search"></i></button>
+                    </form>
+                </li>
+            </ul><!--end .header-nav-options -->
+            <ul class="header-nav header-nav-profile">
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
+                        <img src="{{ asset('uploads/profile/' ~ app.user.id ~'/' ~ app.user.path)}}" alt="hédhi loula" />
+                                <span class="profile-info">
+                                    {{ app.user.username }}
+                                    <small>{{ app.user.type }}</small>
+                                </span>
+                    </a>
+                    <ul class="dropdown-menu animation-zoom">
+                        <li class="dropdown-header">Config</li>
+                        <li><a href="{{ path('user_profile') }}">Profile</a></li>
+                        <li><a href="{{ path('edit_profile') }}">Edit</a></li>
+                        <li class="divider"></li>
+                        <!--<li><a href="#"><i class="fa fa-fw fa-lock"></i> Lock</a></li>-->
+                        <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>
+                    </ul><!--end .dropdown-menu -->
+                </li><!--end .dropdown -->
+            </ul><!--end .header-nav-profile -->
+        </div><!--end #header-navbar-collapse -->
+    </div>
+</header>
+<!-- END HEADER-->
+
+<!-- BEGIN BASE-->
+<div id="base">
+
+    <!-- BEGIN OFFCANVAS LEFT -->
+    <div class="offcanvas">
+    </div><!--end .offcanvas-->
+    <!-- END OFFCANVAS LEFT -->
+
+    <!-- BEGIN CONTENT-->
+    <div id="content">
+        <section class="has-actions style-default-bright">
+
+            <!-- BEGIN INBOX -->
+            <div class="section-body">
+                <div class="row">
+
+                    <!-- BEGIN MAIL COMPOSE -->
+                    <div class="col-sm-8 col-md-9 col-lg-10">
+                        <h3>Compose</h3>
+                        <form class="form form-validate floating-label" novalidate="novalidate" id="formCompose" method="post" action="{{ path('email_compose') }}">
+                            <div class="form-group">
+                                <input type="email" class="form-control" id="to1" name="recepteur" >
+                                <label for="to1">To</label>
+                            </div><!--end .form-group -->
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="Subject1" name="objet" >
+                                <label for="Subject1">Subject</label>
+                            </div><!--end .form-group -->
+                            <div class="form-group">
+                                <textarea id="simple-summernote" name="message" class="form-control control-6-rows" spellcheck="false"></textarea>
+                            </div><!--end .form-group -->
+                        </form>
+                    </div><!--end .col -->
+                    <!-- END MAIL COMPOSE -->
+
+                </div><!--end .row -->
+            </div><!--end .section-body -->
+            <!-- END INBOX -->
+
+            <!-- BEGIN SECTION ACTION -->
+            <div class="section-action style-primary">
+                <div class="section-floating-action-row">
+                    <button type="submit" class="btn ink-reaction btn-floating-action btn-lg btn-accent" href="#formCompose" data-submit="form"><i class="md md-send"></i></button>
+                </div>
+            </div>
+            <!-- END SECTION ACTION -->
+
+        </section>
+    </div><!--end #content-->
+    <!-- END CONTENT -->
+
+    <!-- BEGIN MENUBAR-->
+    <div id="menubar" class="menubar-inverse ">
+        <div class="menubar-fixed-panel">
+            <div>
+                <a class="btn btn-icon-toggle btn-default menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+            <div class="expanded">
+                <a href="{{ path('web_dashboard') }}">
+                    <span class="text-lg text-bold text-primary ">HOMEWORK</span>
+                </a>
+            </div>
+        </div>
+        <div class="menubar-scroll-panel">
+
+            <!-- BEGIN MAIN MENU -->
+            <ul id="main-menu" class="gui-controls">
+
+                <!-- BEGIN DASHBOARD -->
+                <li>
+                    <a href="{{ path('web_dashboard') }}" >
+                        <div class="gui-icon"><i class="md md-dashboard"></i></div>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END DASHBOARD -->
+
+                <!-- BEGIN EMAIL -->
+                <li class="active expanding">
+                    <a href="{{ path('email_compose') }}">
+                        <div class="gui-icon"><i class="md md-email"></i></div>
+                        <span class="title">Email</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END EMAIL -->
+
+                <!-- BEGIN DASHBOARD -->
+                <li>
+                    <a href="{{ path('user_profile') }}" >
+                        <div class="gui-icon"><i class="md md-account-circle"></i></div>
+                        <span class="title">Profile</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END DASHBOARD -->
+
+                <!-- BEGIN UI -->
+                <li>
+                    <a href="{{ path('web_projects_homepage') }}">
+                        <div class="gui-icon"><i class="fa fa-briefcase"></i></div>
+                        <span class="title">Projects</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END UI -->
+
+                <!-- BEGIN TABLES -->
+                <li>
+                    <a href="{{ path('user_freelancers') }}">
+                        <div class="gui-icon"><i class="fa fa-group"></i></div>
+                        <span class="title">Freelancers</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END TABLES -->
+
+                <!-- BEGIN FORMS -->
+                <li>
+                    <a href="{{ path('payment_homepage') }}">
+                        <div class="gui-icon"><i class="fa fa-money"></i></div>
+                        <span class="title">Payments</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END FORMS -->
+
+                <!-- BEGIN PAGES -->
+                <li>
+                    <a href="{{ path('edit_profile') }}">
+                        <div class="gui-icon"><i class="fa fa-wrench"></i></div>
+                        <span class="title">Settings</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END FORMS -->
+
+                <!-- BEGIN CHARTS -->
+                <li>
+                    <a href="{{ path('browse_portfolios') }}" >
+                        <div class="gui-icon"><i class="fa fa-clipboard"></i></div>
+                        <span class="title">Portfolios</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END CHARTS -->
+
+                <!-- BEGIN LEVELS -->
+                <li>
+                    <a href="{{ path('fos_user_security_logout') }}">
+                        <div class="gui-icon"><i class="fa fa-sign-out"></i></div>
+                        <span class="title">Disconnection</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END LEVELS -->
+
+            </ul><!--end .main-menu -->
+            <!-- END MAIN MENU -->
+
+            <div class="menubar-foot-panel">
+                <small class="no-linebreak hidden-folded">
+                    <span class="opacity-75">© 2016 HomeWork.<br></span>Made by <strong>Moez Zineb</strong> & <strong>Abdelaziz Dridi</strong>
+                </small>
+            </div>
+        </div><!--end .menubar-scroll-panel-->
+    </div><!--end #menubar-->
+    <!-- END MENUBAR -->
+
+</div><!--end #base-->
+<!-- END BASE -->
+
+<!-- BEGIN JAVASCRIPT -->
+<script src="{{asset('lib/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/jquery-validation/dist/jquery.validate.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/jquery-validation/dist/additional-methods.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/jquery/jquery-migrate-1.2.1.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/bootstrap/bootstrap.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/spin.js/spin.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/autosize/jquery.autosize.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/nanoscroller/jquery.nanoscroller.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('lib/js/libs/ckeditor/adapters/jquery.js')}}"></script>
+<script src="{{asset('lib/js/libs/summernote/summernote.min.js')}}"></script>
+<script src="{{asset('lib/js/core/source/App.js')}}"></script>
+<script src="{{asset('lib/js/core/source/AppNavigation.js')}}"></script>
+<script src="{{asset('lib/js/core/source/AppOffcanvas.js')}}"></script>
+<script src="{{asset('lib/js/core/source/AppCard.js')}}"></script>
+<script src="{{asset('lib/js/core/source/AppForm.js')}}"></script>
+<script src="{{asset('lib/js/core/source/AppNavSearch.js')}}"></script>
+<script src="{{asset('lib/js/core/source/AppVendor.js')}}"></script>
+<script src="{{asset('lib/js/core/demo/Demo.js')}}"></script>
+<script src="{{asset('lib/js/core/demo/DemoFormEditors.js')}}"></script>
+<!-- END JAVASCRIPT -->
+
+</body>
+</html>

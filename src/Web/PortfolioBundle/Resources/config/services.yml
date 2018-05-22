@@ -1,0 +1,4 @@
+services:
+#    web_portfolio.example:
+#        class: Web\PortfolioBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

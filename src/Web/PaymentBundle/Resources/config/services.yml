@@ -1,0 +1,4 @@
+services:
+#    web_payment.example:
+#        class: Web\PaymentBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Projects | HomeWork</title>
+
+    <!-- BEGIN META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="your,keywords">
+    <meta name="description" content="Short explanation about this website">
+    <!-- END META -->
+
+    <!-- BEGIN STYLESHEETS -->
+    <link rel="icon" href="{{asset ('lib/img/hw.ico')}}" sizes="16x16 32x32 48x48 64x64">
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/libs/bootstrap-datepicker/datepicker3.css?1424887858')}}" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/bootstrap.css?1422792965')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/materialadmin.css?1425466319')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/font-awesome.min.css?1422529194')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/material-design-iconic-font.min.css?1421434286')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/libs/bootstrap-multiselect/bootstrap-multiselect.css?1419109895')}}" />
+    <!-- END STYLESHEETS -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../../../assets/js/libs/utils/html5shiv.js?1403934957"></script>
+    <script type="text/javascript" src="../../../assets/js/libs/utils/respond.min.js?1403934956"></script>
+    <![endif]-->
+</head>
+<body class="menubar-hoverable header-fixed menubar-first  ">
+
+<!-- BEGIN HEADER-->
+<header id="header" >
+    <div class="headerbar">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="headerbar-left">
+            <ul class="header-nav header-nav-options">
+                <li class="header-nav-brand" >
+                    <div class="brand-holder">
+                        <a href="../../../html/dashboards/dashboard.html">
+                            <span class="text-lg text-bold text-primary">HOMEWORK</span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <a class="btn btn-icon-toggle menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="headerbar-right">
+            <ul class="header-nav header-nav-options">
+                <li>
+                    <!-- Search form -->
+                    <form class="navbar-search" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="headerSearch" placeholder="Enter your keyword">
+                        </div>
+                        <button type="submit" class="btn btn-icon-toggle ink-reaction"><i class="fa fa-search"></i></button>
+                    </form>
+                </li>
+                
+            </ul><!--end .header-nav-options -->
+
+                {% if is_granted("ROLE_USER") %}
+                    <ul class="header-nav header-nav-profile">
+                        <li class="dropdown">
+                            <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
+                                <img src="{{ asset('uploads/profile/' ~ app.user.id ~'/' ~ app.user.path)}}" alt="hédhi loula" />
+                                <span class="profile-info">
+                                    {{ app.user.username }}
+                                    <small>{{ app.user.type }}</small>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu animation-zoom">
+                                <li class="dropdown-header">Config</li>
+                                <li><a href="{{ path('user_profile') }}">Profile</a></li>
+                                <li><a href="{{ path('edit_profile') }}">Edit</a></li>
+                                <li class="divider"></li>
+                                <!--<li><a href="#"><i class="fa fa-fw fa-lock"></i> Lock</a></li>-->
+                                <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>
+                            </ul><!--end .dropdown-menu -->
+                        </li><!--end .dropdown -->
+                    </ul>
+                {% else %}
+                    <ul class="header-nav header-nav-options">
+                        <li class="dropdown hidden-xs">
+                            <a href="javascript:void(0);" class="btn btn-icon-toggle btn-default" data-toggle="dropdown">
+                                <i class="fa fa-sign-in"></i>
+                            </a>
+                            <ul class="dropdown-menu animation-zoom">
+                                <li class="dropdown-header">Authentification</li>
+                                <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+                                <li><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
+                            </ul><!--end .dropdown-menu -->
+                        </li><!--end .dropdown -->
+                    </ul>
+                {% endif %}
+            </ul><!--end .header-nav-profile -->
+        </div><!--end #header-navbar-collapse -->
+    </div>
+</header>
+<!-- END HEADER-->
+
+<!-- BEGIN BASE-->
+<div id="base">
+
+    <!-- BEGIN OFFCANVAS LEFT -->
+    <div class="offcanvas">
+    </div><!--end .offcanvas-->
+    <!-- END OFFCANVAS LEFT -->
+
+    <!-- BEGIN CONTENT-->
+    <div id="content">
+        <section>
+            <div class="section-header">
+                <ol class="breadcrumb">
+                    <li class="active">Projects - Search</li>
+                </ol>
+            </div>
+            <div class="section-body contain-lg">
+                <div class="card tabs-left style-default-light">
+
+                    <!-- BEGIN SEARCH HEADER -->
+                            <div class="card-head style-primary">
+                                <div class="tools pull-left">
+                                    <form class="navbar-search" role="search">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="contactSearch" placeholder="Enter your keyword">
+                                        </div>
+                                        <button type="submit" class="btn btn-icon-toggle ink-reaction"><i class="fa fa-search"></i></button>
+                                    </form>
+                                </div>
+                                {% if(is_granted("ROLE_USER")) and (app.user.type=='Employer') %}
+                                <div class="tools">
+                                    <a class="btn btn-floating-action btn-default-light" href="{{ path('web_project_homepage') }}"><i class="fa fa-plus"></i></a>
+                                </div>
+                                {% endif %}
+                            </div><!--end .card-head -->
+                            <!-- END SEARCH HEADER -->
+
+                    <!-- BEGIN TAB RESULT -->
+                    <!--<ul class="card-head nav nav-tabs tabs-accent" data-toggle="tabs">
+                        <li class="active"><a href="#web1">Web</a></li>
+                        <li><a href="#web1">Images</a></li>
+                        <li><a href="#web1">Documents</a></li>
+                        <li><a href="#web1">Videos</a></li>
+                        <li><a href="#web1">Contacts</a></li>
+                    </ul>-->
+                    <!-- END TAB RESULTS -->
+
+                    <!-- BEGIN TAB CONTENT -->
+                    <div class="card-body tab-content style-default-bright">
+                        <div class="tab-pane active" id="web1">
+                            <div class="row">
+                                <div class="col-lg-12">
+
+                                    <!-- BEGIN PAGE HEADER -->
+                                    <div class="margin-bottom-xxl">
+                                        <span class="text-light text-lg">Search results <strong>{{ xx }}</strong></span>
+                                        <!--<div class="btn-group btn-group-sm pull-right">
+                                            <button type="button" class="btn btn-default-light dropdown-toggle" data-toggle="dropdown">
+                                                <span class="glyphicon glyphicon-arrow-down"></span> Sort
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-right animation-dock" role="menu">
+                                                <li class="active"><a href="#">Date asc</a></li>
+                                                <li><a href="#">Date desc</a></li>
+                                                <li><a href="#">Title asc</a></li>
+                                                <li><a href="#">Title desc</a></li>
+                                            </ul>
+                                        </div>-->
+                                    </div><!--end .margin-bottom-xxl -->
+                                    <!-- END PAGE HEADER -->
+
+                                    <!-- BEGIN RESULT LIST -->
+                                    <div class="list-results list-results-underlined">
+                                        {% for p in pr %}
+                                        <div class="col-xs-12">
+                                            <p>
+                                                {% if p.statut == 'debut' %}
+                                                    <span class="badge style-primary-dark">Open</span>
+                                                {% elseif p.statut == 'travaille' %}
+                                                    <span class="badge style-warning">Working</span>
+                                                {% elseif p.statut == 'fin' %}
+                                                    <span class="badge style-info">Finished</span>
+                                                {% endif %}
+                                                <a class="text-medium text-lg telib" href="{{ path('web_propost_homepage', {'idProjet' : p.idProjet}) }}">{{ p.titre }}</a><br/>
+                                                <p class="opacity-75">{{ p.categorie }}</p>
+                                            </p>
+                                            <div class="contain-xs pull-left">
+                                                {{ p.description }}
+                                            </div>
+                                        </div><!--end .col -->
+                                        {% endfor %}
+                                    </div><!--end .list-results -->
+                                    <!-- END RESULTS LIST -->
+                                    <div class="navigation">
+                                        {{ knp_pagination_render(pr) }}
+                                    </div>
+
+                                    <!-- BEGIN PAGING -->
+                                    <!--<ul class="pagination">
+                                        <li class="disabled"><a href="#">PREV</a></li>
+                                        <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
+                                        <li><a href="#">4</a></li>
+                                        <li><a href="#">5</a></li>
+                                        <li><a href="#">NEXT</a></li>
+                                    </ul>
+                                    <!-- END PAGING -->
+
+                                </div><!--end .col -->
+                            </div><!--end .row -->
+                        </div><!--end .tab-pane -->
+                    </div><!--end .card-body -->
+                    <!-- END TAB CONTENT -->
+
+                </div><!--end .card -->
+            </div><!--end .section-body -->
+        </section>
+    </div><!--end #content-->
+    <!-- END CONTENT -->
+
+    <!-- BEGIN MENUBAR-->
+    <div id="menubar" class="menubar-inverse ">
+        <div class="menubar-fixed-panel">
+            <div>
+                <a class="btn btn-icon-toggle btn-default menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+            <div class="expanded">
+                <a href="{{ path('web_dashboard') }}">
+                    <span class="text-lg text-bold text-primary ">HOMEWORK</span>
+                </a>
+            </div>
+        </div>
+        <div class="menubar-scroll-panel">
+
+            <!-- BEGIN MAIN MENU -->
+            <ul id="main-menu" class="gui-controls">
+
+                <!-- BEGIN DASHBOARD -->
+                <li>
+                    <a href="{{ path('web_dashboard') }}" >
+                        <div class="gui-icon"><i class="md md-dashboard"></i></div>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END DASHBOARD -->
+
+                <!-- BEGIN EMAIL -->
+                <li>
+                    <a href="{{ path('email_compose') }}">
+                        <div class="gui-icon"><i class="md md-email"></i></div>
+                        <span class="title">Email</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END EMAIL -->
+
+                <!-- BEGIN DASHBOARD -->
+                <li>
+                    <a href="{{ path('user_profile') }}" >
+                        <div class="gui-icon"><i class="md md-account-circle"></i></div>
+                        <span class="title">Profile</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END DASHBOARD -->
+
+                <!-- BEGIN UI -->
+                <li class="active expanding">
+                    <a href="{{ path('web_projects_homepage') }}">
+                        <div class="gui-icon"><i class="fa fa-briefcase"></i></div>
+                        <span class="title">Projects</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END UI -->
+
+                <!-- BEGIN TABLES -->
+                <li>
+                    <a href="{{ path('user_freelancers') }}">
+                        <div class="gui-icon"><i class="fa fa-group"></i></div>
+                        <span class="title">Freelancers</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END TABLES -->
+
+                <!-- BEGIN FORMS -->
+                <li>
+                    <a href="{{ path('payment_homepage') }}">
+                        <div class="gui-icon"><i class="fa fa-money"></i></div>
+                        <span class="title">Payments</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END FORMS -->
+
+                <!-- BEGIN PAGES -->
+                <li>
+                    <a href="{{ path('edit_profile') }}">
+                        <div class="gui-icon"><i class="fa fa-wrench"></i></div>
+                        <span class="title">Settings</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END FORMS -->
+
+                <!-- BEGIN CHARTS -->
+                <li>
+                    <a href="{{ path('browse_portfolios') }}" >
+                        <div class="gui-icon"><i class="fa fa-clipboard"></i></div>
+                        <span class="title">Portfolios</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END CHARTS -->
+
+                <!-- BEGIN LEVELS -->
+                <li>
+                    <a href="{{ path('fos_user_security_logout') }}">
+                        <div class="gui-icon"><i class="fa fa-sign-out"></i></div>
+                        <span class="title">Disconnection</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END LEVELS -->
+
+            </ul><!--end .main-menu -->
+            <!-- END MAIN MENU -->
+
+            <div class="menubar-foot-panel">
+                <small class="no-linebreak hidden-folded">
+                    <span class="opacity-75">© 2016 HomeWork.<br></span>Made by <strong>Moez Zineb</strong> & <strong>Abdelaziz Dridi</strong>
+                </small>
+            </div>
+        </div><!--end .menubar-scroll-panel-->
+    </div><!--end #menubar-->
+    <!-- END MENUBAR -->
+
+</div><!--end #base-->
+<!-- END BASE -->
+
+<!-- BEGIN JAVASCRIPT -->
+<script src="{{asset('lib/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/jquery/jquery-migrate-1.2.1.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/bootstrap/bootstrap.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/spin.js/spin.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/autosize/jquery.autosize.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/moment/moment.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/bootstrap-datepicker/bootstrap-datepicker.js')}}"></script>
+<script src="{{asset('lib/js/libs/bootstrap-multiselect/bootstrap-multiselect.js')}}"></script>
+<script src="{{asset('lib/js/libs/nanoscroller/jquery.nanoscroller.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/microtemplating/microtemplating.min.js')}}"></script>
+<script src="{{asset('lib/js/core/source/App.js')}}"></script>
+<script src="{{asset('lib/js/core/source/AppNavigation.js')}}"></script>
+<script src="{{asset('lib/js/core/source/AppOffcanvas.js')}}"></script>
+<script src="{{asset('lib/js/core/source/AppCard.js')}}"></script>
+<script src="{{asset('lib/js/core/source/AppForm.js')}}"></script>
+<script src="{{asset('lib/js/core/source/AppNavSearch.js')}}"></script>
+<script src="{{asset('lib/js/core/source/AppVendor.js')}}"></script>
+<script src="{{asset('lib/js/core/demo/Demo.js')}}"></script>
+<script src="{{asset('lib/js/core/demo/DemoPageSearch.js')}}"></script>
+<!-- END JAVASCRIPT -->
+
+</body>
+</html>

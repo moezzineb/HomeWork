@@ -1,0 +1,19 @@
+web_project_homepage:
+    path:     /projects/add
+    defaults: { _controller: WebProjectBundle:Default:index }
+
+web_projects_homepage:
+    path:     /projects
+    defaults: { _controller: WebProjectBundle:Default:projects }
+
+web_propost_homepage:
+    path:     /projects/{idProjet}
+    defaults: { _controller: WebProjectBundle:Default:post }
+
+web_propost_edit:
+    path:     /projects/{idProjet}/edit
+    defaults: { _controller: WebProjectBundle:Default:edit }
+
+web_activity_homepage:
+    path:     /activity
+    defaults: { _controller: WebProjectBundle:Default:activity }

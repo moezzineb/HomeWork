@@ -1,0 +1,261 @@
+<?php
+// src/tuto/UserBundle/Entity/User.php
+
+namespace Web\UserBundle\Entity;
+
+use FOS\UserBundle\Model\User as BaseUser;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+* @ORM\Entity
+* @ORM\Table(name="fos_user")
+*/
+class User extends BaseUser
+{
+   /**
+    * @ORM\Id
+    * @ORM\Column(type="integer")
+    * @ORM\GeneratedValue(strategy="AUTO")
+    * @ORM\OneToMany(targetEntity="Web\ProjectBundle\Entity\Projet", mappedBy="idAbonne", cascade={"persist","remove"})
+    * @ORM\OneToMany(targetEntity="Web\ProjectBundle\Entity\Offre", mappedBy="idAbonne", cascade={"persist","remove"})
+    * @ORM\OneToMany(targetEntity="Web\TagBundle\Entity\Skill", mappedBy="id", cascade={"persist","remove"})
+    */
+   protected $id;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255)
+     */
+    
+    
+    protected $nom;
+
+    /**
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param string $nom
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=255)
+     */
+
+    protected $prenom;
+
+    /**
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * @param string $prenom
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telephone", type="string", length=255)
+     */
+    protected $telephone;
+
+    /**
+     * @return string
+     */
+    public function getTelephone()
+    {
+        return $this->telephone;
+    }
+
+    /**
+     * @param string $telephone
+     */
+    public function setTelephone($telephone)
+    {
+        $this->telephone = $telephone;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="biolographie", type="text", length=500)
+     */
+    protected $biolographie;
+
+    /**
+     * @return string
+     */
+    public function getBiolographie()
+    {
+        return $this->biolographie;
+    }
+
+    /**
+     * @param string $biolographie
+     */
+    public function setBiolographie($biolographie)
+    {
+        $this->biolographie = $biolographie;
+    }
+
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="country", type="string", length=255)
+     */
+    protected $country;
+
+    /**
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param string $country
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="city", type="string", length=255)
+     */
+    protected $city;
+
+    /**
+     * @return string
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string $city
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="speciality", type="string", length=255)
+     */
+    protected $speciality;
+
+    /**
+     * @return string
+     */
+    public function getSpeciality()
+    {
+        return $this->speciality;
+    }
+
+    /**
+     * @param string $speciality
+     */
+    public function setSpeciality($speciality)
+    {
+        $this->speciality = $speciality;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="societe", type="string", length=255)
+     */
+    protected $societe;
+
+    /**
+     * @return string
+     */
+    public function getSociete()
+    {
+        return $this->societe;
+    }
+
+    /**
+     * @param string $societe
+     */
+    public function setSociete($societe)
+    {
+        $this->societe = $societe;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", length=255)
+     */
+    protected $type;
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+    }
+    
+    
+
+
+   public function __construct()
+   {
+       parent::__construct();
+       // your own logic
+   }
+}

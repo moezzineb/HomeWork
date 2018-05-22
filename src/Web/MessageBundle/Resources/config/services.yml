@@ -1,0 +1,4 @@
+services:
+#    web_message.example:
+#        class: Web\MessageBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

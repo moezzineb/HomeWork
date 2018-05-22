@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit Profile - HomeWork</title>
+
+    <!-- BEGIN META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="your,keywords">
+    <meta name="description" content="Short explanation about this website">
+    <!-- END META -->
+
+    <!-- BEGIN STYLESHEETS -->
+    <link rel="icon" href="{{asset ('lib/img/hw.ico')}}" sizes="16x16 32x32 48x48 64x64">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/bootstrap.css?1422792965')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/materialadmin.css?1425466319')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/font-awesome.min.css?1422529194')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/material-design-iconic-font.min.css?1421434286')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/libs/wizard/wizard.css?1425466601')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/libs/bootstrap-tagsinput/bootstrap-tagsinput.css?1424887862')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/libs/multi-select/multi-select.css?1424887857')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/libs/select2/select2.css?1424887856')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/libs/dropzone/dropzone-theme.css?1424887864')}}" />
+
+
+
+    <!-- END STYLESHEETS -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="lib/js/libs/utils/html5shiv.js?1403934957"></script>
+    <script type="text/javascript" src="lib/js/libs/utils/respond.min.js?1403934956"></script>
+    <![endif]-->
+</head>
+<body class="menubar-hoverable header-fixed menubar-first">
+
+<!-- BEGIN HEADER-->
+<header id="header" >
+    <div class="headerbar">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="headerbar-left">
+            <ul class="header-nav header-nav-options">
+                <li class="header-nav-brand" >
+                    <div class="brand-holder">
+                        <a href="../../html/dashboards/dashboard.html">
+                            <span class="text-lg text-bold text-primary">HOMEWORK</span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <a class="btn btn-icon-toggle menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="headerbar-right">
+            <ul class="header-nav header-nav-options">
+                <li>
+                    <!-- Search form -->
+                    <form class="navbar-search" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="headerSearch" placeholder="Enter your keyword">
+                        </div>
+                        <button type="submit" class="btn btn-icon-toggle ink-reaction"><i class="fa fa-search"></i></button>
+                    </form>
+                </li>
+            </ul><!--end .header-nav-options -->
+            <ul class="header-nav header-nav-profile">
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
+                        <img src="{{ asset('uploads/profile/' ~ app.user.id ~'/' ~ app.user.path)}}" alt="hédhi loula" />
+                                <span class="profile-info">
+                                    {{ app.user.username }}
+                                    <small>{{ app.user.type }}</small>
+                                </span>
+                    </a>
+                    <ul class="dropdown-menu animation-zoom">
+                        <li class="dropdown-header">Config</li>
+                        <li><a href="{{ path('user_profile') }}">Profile</a></li>
+                        <li><a href="{{ path('edit_profile') }}">Edit</a></li>
+                        <li class="divider"></li>
+                        <!--<li><a href="#"><i class="fa fa-fw fa-lock"></i> Lock</a></li>-->
+                        <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>
+                    </ul><!--end .dropdown-menu -->
+                </li><!--end .dropdown -->
+            </ul><!--end .header-nav-profile -->
+        </div><!--end #header-navbar-collapse -->
+    </div>
+</header>
+<!-- END HEADER-->
+
+<!-- BEGIN BASE-->
+<div id="base">
+
+    <!-- BEGIN OFFCANVAS LEFT -->
+    <div class="offcanvas">
+    </div><!--end .offcanvas-->
+    <!-- END OFFCANVAS LEFT -->
+
+    <!-- BEGIN CONTENT-->
+    <div id="content">
+        <section>
+            <div class="section-header">
+                <ol class="breadcrumb">
+                    <li class="active">Setting</li>
+                </ol>
+            </div>
+            <div class="section-body contain-lg">
+
+                <!-- BEGIN INTRO -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="text-primary">Edit Profile</h1>
+                    </div><!--end .col -->
+
+                </div><!--end .row -->
+                <!-- END INTRO -->
+
+                <!-- BEGIN FORM WIZARD -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body ">
+                                <div id="rootwizard1" class="form-wizard form-wizard-horizontal">
+                                    <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="form floating-label">
+                                        <div class="form-wizard-nav">
+                                            <div class="progress"><div class="progress-bar progress-bar-primary"></div></div>
+                                            <ul class="nav nav-justified">
+                                                <li class="active"><a href="#tab1" data-toggle="tab"><span class="step">1</span> <span class="title">PERSONAL</span></a></li>
+                                                <li><a href="#tab2" data-toggle="tab"><span class="step">2</span> <span class="title">ADDRESS</span></a></li>
+                                                <li><a href="#tab3" data-toggle="tab"><span class="step">3</span> <span class="title">SKILLS</span></a></li>
+                                                <li><a href="#tab4" data-toggle="tab"><span class="step">4</span> <span class="title">UPLOAD</span></a></li>
+                                                <li><a href="#tab5" data-toggle="tab"><span class="step">5</span> <span class="title">CONFIRM</span></a></li>
+                                            </ul>
+                                        </div><!--end .form-wizard-nav -->
+                                        <div class="tab-content clearfix">
+                                            <div class="tab-pane active" id="tab1">
+                                                <br/><br/>
+                                                <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                {{ form_widget(form.username, {'attr': {'class': 'form-control', 'id': 'Fname'}}) }}
+                                                                <!--<input type="text" name="Fname" id="Fname" class="form-control">-->
+                                                                <label for="Fname" class="control-label">Username</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                                                                <!--<input type="text" name="Lname" id="Lname" class="form-control">-->
+                                                                <label for="Lname" class="control-label">Email</label>
+                                                            </div>
+                                                        </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                        	{{ form_widget(form.nom, {'attr': {'class': 'form-control', 'id': 'Fname'}}) }}
+                                                            <!--<input type="text" name="Fname" id="Fname" class="form-control">-->
+                                                            <label for="Fname" class="control-label">First Name</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                        	{{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+                                                            <!--<input type="text" name="Lname" id="Lname" class="form-control">-->
+                                                            <label for="Lname" class="control-label">Last Name</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane active" id="tab1">
+                                                    <div class="form-group">
+                                                    	{{ form_widget(form.telephone, {'attr': {'class': 'form-control', 'data-rule-minlength': '6', 'maxlength': '8', 'aria-required': 'true'}}) }}
+                                                        <!--<input type="text" class="form-control" name="phone" id="phone" class="form-control" data-rule-minlength="6" maxlength="12" required="" aria-required="true">-->
+                                                        <label for="phone" class="control-label">Phone Number</label>
+                                                    </div>
+                                                    {% if (app.user.type=='Employer') %}
+                                                        <div class="form-group">
+                                                            {{ form_widget(form.societe, {'attr': {'class': 'form-control'}}) }}
+                                                            <!--<input type="text" name="Lname" id="Lname" class="form-control">-->
+                                                            <label for="Lname" class="control-label">Company</label>
+                                                        </div>
+                                                    {% elseif (app.user.type=='Freelancer') %}
+                                                        <div class="form-group">
+                                                            {{ form_widget(form.societe, {'attr': {'class': 'form-control','readonly':'true'}}) }}
+                                                            <!--<input type="text" name="Lname" id="Lname" class="form-control">-->
+                                                            <label for="Lname" class="control-label">Company</label>
+                                                        </div>
+                                                    {% endif %}
+                                                    <div>
+                                                        {% for type in form.type %}
+
+                                                            <label class="radio-inline radio-styled radio-primary">
+                                                                {{ form_widget(type, { 'attr': { 'name': 'radio_demo','class':'radio-inline radiprimary'}}) }}
+                                                                {{ form_label(type) }}
+
+                                                            </label>
+
+                                                        {% endfor %}
+                                                    </div>
+                                                </div></div><!--end #tab1 -->
+                                            <div class="tab-pane" id="tab2">
+                                                <br/><br/>
+                                                <div class="form-group">
+                                                	{{ form_widget(form.country, {'attr': {'class': 'form-control'}}) }}
+                                                    <!--<input type="text" name="country" id="Country" class="form-control">-->
+                                                    <label for="Country" class="control-label">Country</label>
+                                                </div>
+                                                <div class="form-group">
+                                                	{{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
+                                                    <!--<input type="text" name="city" id="City" class="form-control">-->
+                                                    <label for="City" class="control-label">City</label>
+                                                </div>
+                                            </div><!--end #tab2 -->
+                                            <div class="tab-pane" id="tab3">
+                                                <br/><br/>
+                                                <div class="form-group">
+                                                	{{ form_widget(form.speciality, {'attr': {'class': 'form-control'}}) }}
+                                                    <!--<select id="select1" name="specialty" class="form-control" required>
+                                                        <option value="">&nbsp;</option>
+                                                        <option value="webdev">Web Developer</option>
+                                                        <option value="webdesign">Web Design</option>
+                                                        <option value="mobdev">Mobile Developers</option>
+                                                        <option value="seo">SEO</option>
+                                                    </select>-->
+                                                    <label for="select1">Specialty</label>
+                                                </div>
+                                                <div class="form-group">
+                                                    {{ form_widget(form.biolographie, {'attr': {'class': 'form-control'}}) }}
+                                                    <label>Biolographie</label>
+                                                </div>
+
+                                            </div><!--end #tab3 -->
+                                            <div class="tab-pane" id="tab4">
+                                                <br/><br/>
+                                                <center>
+                                                    <p>Choose your profile picture </p>
+                                                    {{ form_widget(form.file) }}
+                                                </center>
+                                            </div><!--end .tab-content -->
+                                            <div class="tab-pane" id="tab5">
+                                                <br/><br/>
+                                                <center>
+                                                    <p>This is it all you need is to validate now !</p>
+                                                    <button type="submit" name="btn" class="btn btn-raised btn-primary">Validate</button>
+                                                </center>
+                                            </div><!--end .tab-content -->
+                                            <ul class="pager wizard">
+                                                <li class="previous first"><a class="btn-raised" href="javascript:void(0);">First</a></li>
+                                                <li class="previous"><a class="btn-raised" href="javascript:void(0);">Previous</a></li>
+                                                <li class="next last"><a class="btn-raised" href="javascript:void(0);">Last</a></li>
+                                                <li class="next"><a class="btn-raised" href="javascript:void(0);">Next</a></li>
+                                            </ul>
+                                        </div>
+                                        {{ form_widget(form) }}
+                                		
+                                    </form>
+                                </div><!--end #rootwizard -->
+                            </div><!--end .card-body -->
+                        </div><!--end .card -->
+                    </div><!--end .col -->
+                </div><!--end .row -->
+                <!-- END FORM WIZARD -->
+
+            </div><!--end .section-body -->
+        </section>
+    </div><!--end #content-->
+    <!-- END CONTENT -->
+
+    <!-- BEGIN MENUBAR-->
+    <div id="menubar" class="menubar-inverse ">
+        <div class="menubar-fixed-panel">
+            <div>
+                <a class="btn btn-icon-toggle btn-default menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+            <div class="expanded">
+                <a href="{{ path('web_dashboard') }}">
+                    <span class="text-lg text-bold text-primary ">HOMEWORK</span>
+                </a>
+            </div>
+        </div>
+        <div class="menubar-scroll-panel">
+
+            <!-- BEGIN MAIN MENU -->
+            <ul id="main-menu" class="gui-controls">
+
+                <!-- BEGIN DASHBOARD -->
+                <li>
+                    <a href="{{ path('web_dashboard') }}" >
+                        <div class="gui-icon"><i class="md md-dashboard"></i></div>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END DASHBOARD -->
+
+                <!-- BEGIN EMAIL -->
+                <li>
+                    <a href="{{ path('email_compose') }}">
+                        <div class="gui-icon"><i class="md md-email"></i></div>
+                        <span class="title">Email</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END EMAIL -->
+
+                <!-- BEGIN DASHBOARD -->
+                <li>
+                    <a href="{{ path('user_profile') }}" >
+                        <div class="gui-icon"><i class="md md-account-circle"></i></div>
+                        <span class="title">Profile</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END DASHBOARD -->
+
+                <!-- BEGIN UI -->
+                <li>
+                    <a href="{{ path('web_projects_homepage') }}">
+                        <div class="gui-icon"><i class="fa fa-briefcase"></i></div>
+                        <span class="title">Projects</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END UI -->
+
+                <!-- BEGIN TABLES -->
+                <li>
+                    <a href="{{ path('user_freelancers') }}">
+                        <div class="gui-icon"><i class="fa fa-group"></i></div>
+                        <span class="title">Freelancers</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END TABLES -->
+
+                <!-- BEGIN FORMS -->
+                <li>
+                    <a href="{{ path('payment_homepage') }}">
+                        <div class="gui-icon"><i class="fa fa-money"></i></div>
+                        <span class="title">Payments</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END FORMS -->
+
+                <!-- BEGIN PAGES -->
+                <li class="active expanding">
+                    <a href="{{ path('edit_profile') }}">
+                        <div class="gui-icon"><i class="fa fa-wrench"></i></div>
+                        <span class="title">Settings</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END FORMS -->
+
+                <!-- BEGIN CHARTS -->
+                <li>
+                    <a href="{{ path('browse_portfolios') }}" >
+                        <div class="gui-icon"><i class="fa fa-clipboard"></i></div>
+                        <span class="title">Portfolios</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END CHARTS -->
+
+                <!-- BEGIN LEVELS -->
+                <li>
+                    <a href="{{ path('fos_user_security_logout') }}">
+                        <div class="gui-icon"><i class="fa fa-sign-out"></i></div>
+                        <span class="title">Disconnection</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END LEVELS -->
+
+            </ul><!--end .main-menu -->
+            <!-- END MAIN MENU -->
+
+            <div class="menubar-foot-panel">
+                <small class="no-linebreak hidden-folded">
+                    <span class="opacity-75">© 2016 HomeWork.<br></span>Made by <strong>Moez Zineb</strong> & <strong>Abdelaziz Dridi</strong>
+                </small>
+            </div>
+        </div><!--end .menubar-scroll-panel-->
+    </div><!--end #menubar-->
+    <!-- END MENUBAR -->
+</div><!--end #base-->
+<!-- END BASE -->
+
+<!-- BEGIN JAVASCRIPT -->
+<script src="{{asset('lib/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/jquery/jquery-migrate-1.2.1.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/bootstrap/bootstrap.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/spin.js/spin.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/autosize/jquery.autosize.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/nanoscroller/jquery.nanoscroller.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/jquery-validation/dist/jquery.validate.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/jquery-validation/dist/additional-methods.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/wizard/jquery.bootstrap.wizard.min.js')}}"></script>
+<script src="{{asset('lib/js/core/source/App.js')}}"></script>
+<script src="{{asset('lib/js/core/source/AppNavigation.js')}}"></script>
+<script src="{{asset('lib/js/core/source/AppOffcanvas.js')}}"></script>
+<script src="{{asset('lib/js/core/source/AppCard.js')}}"></script>
+<script src="{{asset('lib/js/core/source/AppForm.js')}}"></script>
+<script src="{{asset('lib/js/core/source/AppNavSearch.js')}}"></script>
+<script src="{{asset('lib/js/core/source/AppVendor.js')}}"></script>
+<script src="{{asset('lib/js/core/demo/Demo.js')}}"></script>
+<script src="{{asset('lib/js/core/demo/DemoFormWizard.js')}}"></script>
+<script src="{{asset('lib/js/libs/bootstrap-tagsinput/bootstrap-tagsinput.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/multi-select/jquery.multi-select.js')}}"></script>
+<script src="{{asset('lib/js/libs/inputmask/jquery.inputmask.bundle.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/select2/select2.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/dropzone/dropzone.min.js')}}"></script>
+<script src="{{asset('lib/js/libs/typeahead/typeahead.bundle.min.js')}}"></script>
+<!--<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>-->
+<script type="text/javascript">
+    $('#skills').select2();
+    //$("#my-awesome-dropzone").dropzone({ url: "/file-upload" });
+</script>
+<!-- END JAVASCRIPT -->
+
+</body>
+</html>

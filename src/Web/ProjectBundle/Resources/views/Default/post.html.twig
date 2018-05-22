@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ test.titre }} | HomeWork</title>
+
+    <!-- BEGIN META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="your,keywords">
+    <meta name="description" content="Short explanation about this website">
+    <!-- END META -->
+
+    <!-- BEGIN STYLESHEETS -->
+    <link rel="icon" href="{{asset ('lib/img/hw.ico')}}" sizes="16x16 32x32 48x48 64x64">
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/libs/bootstrap-datepicker/datepicker3.css?1424887858')}}" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto:300italic,400italic,300,400,500,700,900' rel='stylesheet' type='text/css'/>
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/bootstrap.css?1422792965')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/materialadmin.css?1425466319')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/font-awesome.min.css?1422529194')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/material-design-iconic-font.min.css?1421434286')}}" />
+    <link type="text/css" rel="stylesheet" href="{{asset ('lib/css/theme-default/libs/bootstrap-multiselect/bootstrap-multiselect.css?1419109895')}}" />
+    <!-- END STYLESHEETS -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="../../../assets/js/libs/utils/html5shiv.js?1403934957"></script>
+    <script type="text/javascript" src="../../../assets/js/libs/utils/respond.min.js?1403934956"></script>
+    <![endif]-->
+</head>
+<body class="menubar-hoverable header-fixed menubar-first ">
+
+<!-- BEGIN HEADER-->
+<header id="header">
+    <div class="headerbar">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="headerbar-left">
+            <ul class="header-nav header-nav-options">
+                <li class="header-nav-brand" >
+                    <div class="brand-holder">
+                        <a href="../../../html/dashboards/dashboard.html">
+                            <span class="text-lg text-bold text-primary">HOMEWORK</span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <a class="btn btn-icon-toggle menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="headerbar-right">
+            <ul class="header-nav header-nav-options">
+                <li>
+                    <!-- Search form -->
+                    <form class="navbar-search" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="headerSearch" placeholder="Enter your keyword">
+                        </div>
+                        <button type="submit" class="btn btn-icon-toggle ink-reaction"><i class="fa fa-search"></i></button>
+                    </form>
+                </li>
+                
+            </ul><!--end .header-nav-options -->
+            {% if is_granted("ROLE_USER") %}
+                <ul class="header-nav header-nav-profile">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
+                            <img src="{{ asset('uploads/profile/' ~ app.user.id ~'/' ~ app.user.path)}}" alt="hédhi loula" />
+                                <span class="profile-info">
+                                    {{ app.user.username }}
+                                    <small>{{ app.user.type }}</small>
+                                </span>
+                        </a>
+                        <ul class="dropdown-menu animation-zoom">
+                            <li class="dropdown-header">Config</li>
+                            <li><a href="{{ path('user_profile') }}">Profile</a></li>
+                            <li><a href="{{ path('edit_profile') }}">Edit</a></li>
+                            <li class="divider"></li>
+                            <!--<li><a href="#"><i class="fa fa-fw fa-lock"></i> Lock</a></li>-->
+                            <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-fw fa-power-off text-danger"></i> Logout</a></li>
+                        </ul><!--end .dropdown-menu -->
+                    </li><!--end .dropdown -->
+                </ul>
+            {% else %}
+                <ul class="header-nav header-nav-options">
+                    <li class="dropdown hidden-xs">
+                        <a href="javascript:void(0);" class="btn btn-icon-toggle btn-default" data-toggle="dropdown">
+                            <i class="fa fa-sign-in"></i>
+                        </a>
+                        <ul class="dropdown-menu animation-zoom">
+                            <li class="dropdown-header">Authentification</li>
+                            <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+                            <li><a href="{{ path('fos_user_registration_register') }}">Register</a></li>
+                        </ul><!--end .dropdown-menu -->
+                    </li><!--end .dropdown -->
+                </ul>
+            {% endif %}
+        </div><!--end #header-navbar-collapse -->
+    </div>
+</header>
+<!-- END HEADER-->
+
+<!-- BEGIN BASE-->
+<div id="base">
+
+    <!-- BEGIN OFFCANVAS LEFT -->
+    <div class="offcanvas">
+    </div><!--end .offcanvas-->
+    <!-- END OFFCANVAS LEFT -->
+
+    <!-- BEGIN CONTENT-->
+    <div id="content">
+
+        <section>
+            <div class="section-header">
+                <ol class="breadcrumb">
+                    <li><a href="../../../html/pages/blog/masonry.html">Projects</a></li>
+                    <li class="active">{{ test.titre }}</li>
+                </ol>
+            </div>
+            <div class="section-body contain-lg">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card card-tiles style-default-light">
+
+                            <!-- BEGIN BLOG POST HEADER -->
+                            <div class="row style-primary">
+                                <div class="col-sm-9">
+                                    <div class="card-body style-default-dark">
+                                        <h2>{{ test.titre }}</h2>
+                                        <div class="text-default-light">Posted by <a href="#">{{ test.idAbonne }}</a></div>
+                                    </div>
+                                </div><!--end .col -->
+                                <div class="col-sm-3">
+                                    <div class="card-body">
+                                        <div class="hidden-xs">
+                                            <h3 class="text-light"><strong>{{ test.dateDebut|date('d')}}</strong> {{ test.dateDebut|date('F')}} <strong>{{ test.dateDebut|date('Y')}}</strong></h3>
+                                            {% if test.statut == 'debut' %}
+                                            <span class="badge style-primary-dark">Recieve offers</span>
+                                            {% elseif test.statut == 'travaille' %}
+                                                <span class="badge style-warning">Work in progress</span>
+                                            {% elseif test.statut == 'fin' %}
+                                                <span class="badge style-info">Finished</span>
+                                            {% endif %}
+                                            {% if (is_granted("ROLE_USER") and (app.user.username == test.idAbonne)) %}
+                                            <div class="stick-top-right">
+                                                <a href="{{ path('web_propost_edit',{'idProjet' : test.idProjet}) }} " class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Modify your project"><i class="fa fa-edit"></i></a>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="visible-xs">
+                                            <strong>{{ test.dateDebut|date('d')}}</strong> {{ test.dateDebut|date('F')}} <strong>{{ test.dateDebut|date('Y')}}</strong><a href="#">{{ test.statut }}</a>
+                                        </div>
+                                    </div>
+                                </div><!--end .col -->
+                            </div><!--end .row -->
+                            <!-- END BLOG POST HEADER -->
+
+                            <div class="row">
+
+                                <!-- BEGIN BLOG POST TEXT -->
+                                <div class="col-md-9">
+                                    <article class="style-default-bright">
+
+                                        <div class="card-body">
+                                            <p class="lead">{{ test.description }}</p>
+                                            <br/>
+                                            <div class="well clearfix">
+                                                <h4>Project Owner : {{ test.idAbonne }}</h4>
+                                                <img class="height-3 pull-right img-circle" src="{{ asset('uploads/profile/' ~ test.idAbonne.id ~'/' ~ test.idAbonne.path)}}" alt="" height="140px" width="140px"/>
+                                                <p>{{ test.idAbonne.biolographie }}</p>
+                                            </div>
+                                            {% if (test.statut == 'choix') or (test.statut == 'travaille') or (test.statut == 'fin') %}
+                                            <div class="well clearfix">
+                                                <h4>Freelancer : {{ free.username }}</h4>
+                                                <img class="height-3 pull-right img-circle" src="{{ asset('uploads/profile/' ~ free.id ~'/' ~ free.path)}}" alt="" height="140px" width="140px"/>
+                                                <p>{{ free.biolographie }}</p>
+                                            </div>
+                                            {% endif %}
+                                        </div><!--end .card-body -->
+                                    </article>
+                                </div><!--end .col -->
+                                <!-- END BLOG POST TEXT -->
+
+                                <!-- BEGIN BLOG POST MENUBAR -->
+                                <div class="col-md-3">
+                                    <div class="card-body">
+                                        <h3 class="text-light">Categories</h3>
+                                        <ul class="nav nav-pills nav-stacked nav-transparent">
+                                            <li><a href="#">{{ test.categorie }}</a></li>
+                                        </ul>
+                                        <h3 class="text-light">Expect budget</h3>
+                                        <ul class="nav nav-pills nav-stacked nav-transparent">
+                                            <li><a href="#">{{ test.budget }} $</a></li>
+                                        </ul>
+                                        <h3 class="text-light">Expect Time</h3>
+                                        <ul class="nav nav-pills nav-stacked nav-transparent">
+                                            <li><a href="#">{{ test.duree }} DAYS</a></li>
+                                        </ul>
+                                    </div><!--end .card-body -->
+                                </div><!--end .col -->
+                                <!-- END BLOG POST MENUBAR -->
+
+                            </div><!--end .row -->
+                        </div><!--end .card -->
+                    </div><!--end .col -->
+                </div><!--end .row -->
+
+                <!-- BEGIN Offres -->
+                <div class="row">
+                    <div class="col-md-9">
+                        <strong><h4>{{ count }} Offers</h4></strong>
+                        <ul class="list-comments">
+                            {% for pro in projet %}
+                            <li>
+                                <div class="card">
+                                    <div class="comment-avatar">
+                                        <img class="img-circle" src="{{ asset('uploads/profile/' ~ pro.idAbonne.id ~'/' ~ pro.idAbonne.path)}}" alt="">
+                                    </div>
+                                    <div class="card-body">
+                                        <h4 class="comment-title">{{ pro.idAbonne }} <small>{{ pro.dateOffre|date("d/m/Y") }} at {{ pro.dateOffre|date("h:i") }} pm</small></h4>
+                                        <p class="btn btn-default-dark stick-top-right">{{ pro.cout }} $ / {{ pro.delai }} Days</p>
+                                        <p>{{ pro.details }}</p>
+                                        {% if (is_granted("ROLE_USER") and (app.user.username == pro.idAbonne)) %}
+                                            <div class="stick-bottom-right">
+                                                <a href="#" class="btn btn-icon-toggle" data-toggle="tooltip" data-placement="top" data-original-title="Modify your offer"><i class="fa fa-edit"></i></a>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div><!--end .card -->
+                            </li><!-- end comment -->
+                            {% endfor %}
+                        </ul>
+                    </div><!--end .col -->
+                </div><!--end .row -->
+                <!-- END COMMENTS -->
+                {% if is_granted("ROLE_USER") and (test.statut == 'debut') and (app.user.type == "Freelancer") %}
+                <!-- BEGIN LEAVE COMMENT -->
+                <div class="row">
+                    <div class="col-md-9">
+                        <h4>Post your offer</h4>
+                        <form class="form-horizontal" role="form" method="POST" action="{{ path('web_propost_homepage', {'idProjet' : test.idProjet}) }}">
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label for="name" class="control-label">Time of delivery</label>
+                                </div>
+                                <div class="col-md-10">
+                                    {{ form_widget(form.delai, {'attr': {'class': 'form-control', 'placeholder':'Time of delivery' }}) }}
+                                    <!--<input type="number" name="devliver" id="devliver" class="form-control control-width-normal" placeholder="Time of delivery">-->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label for="email" class="control-label">Offer Amount</label>
+                                </div>
+                                <div class="col-md-10">
+                                    {{ form_widget(form.cout, {'attr': {'class': 'form-control', 'placeholder':'Offer Amount' }}) }}
+                                    <!--<input type="number" name="amount" id="amount" class="form-control control-width-normal" placeholder="Offer Amount">-->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label for="readonly5" class="control-label">HomeWork commission</label>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="number" step="0.1" class="form-control" id="readonly5" value="0" readonly>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label for="detail" class="control-label">Offre details</label>
+                                </div>
+                                <div class="col-md-10">
+                                    {{ form_widget(form.details, {'attr': {'class': 'form-control', 'placeholder':'Describe your offre' }}) }}
+                                    <!--<textarea name="detail" id="detail" class="form-control autosize" rows="3" placeholder="Describe your offre"></textarea>-->
+                                </div>
+                            </div>
+                            <div class="form-footer col-md-offset-2">
+                                <button type="submit" id="btn" class="btn btn-primary">Post your offre</button>
+                                <button type="reset" class="btn btn-secondary">Cancel</button>
+                            </div>
+                            {{ form_widget(form) }}
+                        </form>
+                    </div><!--end .col -->
+                </div><!--end .row -->
+                <!-- END LEAVE COMMENT -->
+                {% elseif (is_granted("ROLE_USER")) and (test.statut == 'choix') or (test.statut == 'travaille') or (test.statut == 'fin') %}
+                    <div class="alert alert-warning" role="alert">
+                        <b>Note !</b> This project is in progress you can't post your offer anymore.
+                    </div>
+                {% elseif (is_granted("ROLE_USER")) and (test.statut == 'fin') %}
+                    <div class="alert alert-warning" role="alert">
+                        <b>Note !</b> This project is closed.
+                    </div>
+                {% elseif (is_granted("ROLE_USER")) and (app.user.type == "Employer") %}
+                    <div class="alert alert-warning" role="alert">
+                        Note ! You should be Freelancer to post an offer, You can change your account type in <b><a href="{{ path('edit_profile') }}">Settings</a></b> .
+                    </div>
+                {% elseif is_granted("IS_AUTHENTICATED_ANONYMOUSLY") %}
+                    <div class="alert alert-danger" role="alert">
+                        <b>Note !</b> You can't post your offers till you get <b><a href="{{ path('fos_user_security_login') }}">logged in</a></b> .
+                    </div>
+                {% endif %}
+            </div><!--end .section-body -->
+        </section>
+    </div><!--end #content-->
+    <!-- END CONTENT -->
+
+    <!-- BEGIN MENUBAR-->
+    <div id="menubar" class="menubar-inverse ">
+        <div class="menubar-fixed-panel">
+            <div>
+                <a class="btn btn-icon-toggle btn-default menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+            <div class="expanded">
+                <a href="{{ path('web_dashboard') }}">
+                    <span class="text-lg text-bold text-primary ">HOMEWORK</span>
+                </a>
+            </div>
+        </div>
+        <div class="menubar-scroll-panel">
+
+            <!-- BEGIN MAIN MENU -->
+            <ul id="main-menu" class="gui-controls">
+
+                <!-- BEGIN DASHBOARD -->
+                <li>
+                    <a href="{{ path('web_dashboard') }}" >
+                        <div class="gui-icon"><i class="md md-dashboard"></i></div>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END DASHBOARD -->
+
+                <!-- BEGIN EMAIL -->
+                <li>
+                    <a href="{{ path('email_compose') }}">
+                        <div class="gui-icon"><i class="md md-email"></i></div>
+                        <span class="title">Email</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END EMAIL -->
+
+                <!-- BEGIN DASHBOARD -->
+                <li>
+                    <a href="{{ path('user_profile') }}" >
+                        <div class="gui-icon"><i class="md md-account-circle"></i></div>
+                        <span class="title">Profile</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END DASHBOARD -->
+
+                <!-- BEGIN UI -->
+                <li class="active expanding">
+                    <a href="{{ path('web_projects_homepage') }}">
+                        <div class="gui-icon"><i class="fa fa-briefcase"></i></div>
+                        <span class="title">Projects</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END UI -->
+
+                <!-- BEGIN TABLES -->
+                <li>
+                    <a href="{{ path('user_freelancers') }}">
+                        <div class="gui-icon"><i class="fa fa-group"></i></div>
+                        <span class="title">Freelancers</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END TABLES -->
+
+                <!-- BEGIN FORMS -->
+                <li>
+                    <a href="{{ path('payment_homepage') }}">
+                        <div class="gui-icon"><i class="fa fa-money"></i></div>
+                        <span class="title">Payments</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END FORMS -->
+
+                <!-- BEGIN PAGES -->
+                <li>
+                    <a href="{{ path('edit_profile') }}">
+                        <div class="gui-icon"><i class="fa fa-wrench"></i></div>
+                        <span class="title">Settings</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END FORMS -->
+
+                <!-- BEGIN CHARTS -->
+                <li>
+                    <a href="{{ path('browse_portfolios') }}" >
+                        <div class="gui-icon"><i class="fa fa-clipboard"></i></div>
+                        <span class="title">Portfolios</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END CHARTS -->
+
+                <!-- BEGIN LEVELS -->
+                <li>
+                    <a href="{{ path('fos_user_security_logout') }}">
+                        <div class="gui-icon"><i class="fa fa-sign-out"></i></div>
+                        <span class="title">Disconnection</span>
+                    </a>
+                </li><!--end /menu-li -->
+                <!-- END LEVELS -->
+
+            </ul><!--end .main-menu -->
+            <!-- END MAIN MENU -->
+
+            <div class="menubar-foot-panel">
+                <small class="no-linebreak hidden-folded">
+                    <span class="opacity-75">© 2016 HomeWork.<br></span>Made by <strong>Moez Zineb</strong> & <strong>Abdelaziz Dridi</strong>
+                </small>
+            </div>
+        </div><!--end .menubar-scroll-panel-->
+    </div><!--end #menubar-->
+    <!-- END MENUBAR -->
+        
+
+</div><!--end #base-->
+<!-- END BASE -->
+
+<!-- BEGIN JAVASCRIPT -->
+    <script src="{{asset('lib/js/libs/jquery/jquery-1.11.2.min.js')}}"></script>
+    <script src="{{asset('lib/js/libs/jquery-validation/dist/jquery.validate.min.js')}}"></script>
+    <script src="{{asset('lib/js/libs/jquery-validation/dist/additional-methods.min.js')}}"></script>
+    <script src="{{asset('lib/js/libs/jquery/jquery-migrate-1.2.1.min.js')}}"></script>
+    <script src="{{asset('lib/js/libs/bootstrap/bootstrap.min.js')}}"></script>
+    <script src="{{asset('lib/js/libs/spin.js/spin.min.js')}}"></script>
+    <script src="{{asset('lib/js/libs/autosize/jquery.autosize.min.js')}}"></script>
+    <script src="{{asset('lib/js/libs/nanoscroller/jquery.nanoscroller.min.js')}}"></script>
+    <script src="{{asset('lib/js/core/source/App.js')}}"></script>
+    <script src="{{asset('lib/js/core/source/AppNavigation.js')}}"></script>
+    <script src="{{asset('lib/js/core/source/AppOffcanvas.js')}}"></script>
+    <script src="{{asset('lib/js/core/source/AppCard.js')}}"></script>
+    <script src="{{asset('lib/js/core/source/AppForm.js')}}"></script>
+    <script src="{{asset('lib/js/core/source/AppNavSearch.js')}}"></script>
+    <script src="{{asset('lib/js/core/source/AppVendor.js')}}"></script>
+    <script src="{{asset('lib/js/core/demo/Demo.js')}}"></script>
+<!-- END JAVASCRIPT -->
+
+</body>
+</html>

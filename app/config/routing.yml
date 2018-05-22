@@ -1,0 +1,35 @@
+web_message:
+    resource: "@WebMessageBundle/Resources/config/routing.yml"
+    prefix:   /
+
+web_payment:
+    resource: "@WebPaymentBundle/Resources/config/routing.yml"
+    prefix:   /
+
+web_portfolio:
+    resource: "@WebPortfolioBundle/Resources/config/routing.yml"
+    prefix:   /
+
+web_tag:
+    resource: "@WebTagBundle/Resources/config/routing.yml"
+    prefix:   /
+
+web_project:
+    resource: "@WebProjectBundle/Resources/config/routing.yml"
+    prefix:   /
+
+web_user:
+    resource: "@WebUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+easy_admin_bundle:
+    resource: "@EasyAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /admin

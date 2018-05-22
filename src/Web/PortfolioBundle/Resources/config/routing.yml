@@ -1,0 +1,11 @@
+create_portfolio:
+    path:     /portfolio/create
+    defaults: { _controller: WebPortfolioBundle:Default:index }
+
+browse_portfolios:
+    path:     /portfolios
+    defaults: { _controller: WebPortfolioBundle:Default:portfolios }
+
+post_portfolio:
+    path:     /portfolio/{titre}
+    defaults: { _controller: WebPortfolioBundle:Default:post }
