@@ -25,6 +25,14 @@
     <script type="text/javascript" src="../../assets/js/libs/utils/html5shiv.js?1403934957"></script>
     <script type="text/javascript" src="../../assets/js/libs/utils/respond.min.js?1403934956"></script>
     <![endif]-->
+    <style>
+        .my-avatar {
+            object-fit: cover;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+        }
+    </style>
 </head>
 <body class="menubar-hoverable header-fixed menubar-first  ">
 
@@ -232,7 +240,7 @@
                             </div><!--end .card-head -->
                             <div class="card-body height-8">
                                 <div class="pull-center text-center">
-                                    <center><img class="img-circle border-white border-xl img-responsive" src="{{ asset('uploads/profile/' ~ app.user.id ~'/' ~ app.user.path)}}" alt="" height="140px" width="140px" /></center>
+                                    <center><img class="img-circle border-white border-xl my-avatar" src="{{ asset('uploads/profile/' ~ app.user.id ~'/' ~ app.user.path)}}" alt="" height="140px" width="140px"/></center>
                                     <h3>{{ app.user.nom }} {{ app.user.prenom}}<br/><small>{{ app.user.type }}</small></h3>
                                 </div>
                             </div><!--end .card-body -->
